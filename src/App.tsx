@@ -1,5 +1,12 @@
 import React from 'react';
-import {Pressable, SafeAreaView, StatusBar, Text, View} from 'react-native';
+import {
+  Image,
+  Pressable,
+  SafeAreaView,
+  StatusBar,
+  Text,
+  View,
+} from 'react-native';
 
 const COLORS = {
   background: '#ffbe0b',
@@ -14,16 +21,20 @@ const App = () => {
   return (
     <SafeAreaView style={{backgroundColor: COLORS.background}}>
       <StatusBar barStyle={'light-content'} />
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100%',
-          paddingBottom: 40,
-        }}>
-        <Question />
-        <Answer />
-        <NextJokeButton onPress={() => console.log('next joke!')} />
+      <View style={{flexDirection: 'column', height: '100%'}}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            marginVertical: 20,
+            marginHorizontal: 10,
+          }}>
+          <Question />
+          <Answer />
+        </View>
+        <View>
+          <NextJokeButton onPress={() => console.log('next joke!')} />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -52,7 +63,7 @@ const Answer = () => {
     <Text
       style={{
         textAlign: 'center',
-        fontSize: 15,
+        fontSize: 18,
         paddingHorizontal: 20,
         paddingVertical: 40,
         color: COLORS.answer,
@@ -70,9 +81,15 @@ const NextJokeButton = ({onPress}: {onPress: () => void}) => {
         backgroundColor: pressed ? COLORS.buttonPressed : COLORS.button,
         borderRadius: 10,
         padding: 20,
+        marginBottom: 50,
+        alignSelf: 'center',
       })}
       onPress={onPress}>
-      <Text style={{color: COLORS.buttonText}}>Next joke 🃏</Text>
+      {/* <Text style={{color: COLORS.buttonText, fontSize: 16}}>Next joke 🃏</Text> */}
+      <Image
+        style={{height: 50, width: 50}}
+        source={require('./assets/refresh.png')}
+      />
     </Pressable>
   );
 };

@@ -10,6 +10,8 @@ import {
 import {Joke} from '../types';
 import {getJoke} from '../services/joke';
 
+import {BLAGUE_API_KEY} from '@env';
+
 const COLORS = {
   background: '#ffbe0b',
   question: '#692DBD',

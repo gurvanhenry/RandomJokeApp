@@ -87,7 +87,7 @@ const NextJokeButton = ({onPress}: {onPress: () => void}) => {
       onPress={onPress}>
       <Image
         style={{height: 50, width: 50}}
-        source={require('./assets/refresh.png')}
+        source={require('../assets/refresh.png')}
       />
     </Pressable>
   );

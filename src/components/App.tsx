@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Image,
   Pressable,
@@ -7,6 +7,8 @@ import {
   Text,
   View,
 } from 'react-native';
+import {Joke} from '../types';
+import {getJoke} from '../services/joke';
 
 const COLORS = {
   background: '#ffbe0b',
@@ -17,7 +19,25 @@ const COLORS = {
   buttonText: '#ffffff',
 };
 
+const DEFAULT_JOKE = {
+  id: '',
+  type: '',
+  question: '...',
+  answer: '...',
+};
+
 const App = () => {
+  const [joke, setJoke] = useState<Joke>(DEFAULT_JOKE);
+
+  useEffect(() => {
+    getNewJoke();
+  }, []);
+
+  async function getNewJoke() {
+    const newJoke = await getJoke();
+    setJoke(newJoke);
+  }
+
   return (
     <SafeAreaView style={{backgroundColor: COLORS.background}}>
       <StatusBar barStyle={'light-content'} />
@@ -29,19 +49,18 @@ const App = () => {
             marginVertical: 20,
             marginHorizontal: 10,
           }}>
-          <Question />
-          <Answer />
+          <Question text={joke.question} />
+          <Answer text={joke.answer} />
         </View>
         <View>
-          <NextJokeButton onPress={() => console.log('next joke!')} />
+          <NextJokeButton onPress={getNewJoke} />
         </View>
       </View>
     </SafeAreaView>
   );
 };
 
-const Question = () => {
-  const text = 'Comment appelle-t-on la mère du phoque ?';
+const Question = ({text}: {text: string}) => {
   return (
     <Text
       style={{
@@ -57,8 +76,7 @@ const Question = () => {
   );
 };
 
-const Answer = () => {
-  const text = 'Mother phoquer';
+const Answer = ({text}: {text: string}) => {
   return (
     <Text
       style={{

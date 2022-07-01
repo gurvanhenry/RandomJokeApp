@@ -85,7 +85,6 @@ const NextJokeButton = ({onPress}: {onPress: () => void}) => {
         alignSelf: 'center',
       })}
       onPress={onPress}>
-      {/* <Text style={{color: COLORS.buttonText, fontSize: 16}}>Next joke 🃏</Text> */}
       <Image
         style={{height: 50, width: 50}}
         source={require('./assets/refresh.png')}

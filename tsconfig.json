@@ -7,6 +7,6 @@
     /* Completeness */
     "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
     
-    "typesRoots": ["./src/types"]
+    "typeRoots": ["./src/types"]
   }
 }

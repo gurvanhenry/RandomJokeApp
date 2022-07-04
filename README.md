@@ -1,6 +1,6 @@
 # RandomJokeApp
 
-![Screenshot](docs/screenshot.jpg)
+<img src="docs/screenshot.jpg" width="150">
 
 ## set up 
 

@@ -1,4 +1,4 @@
-export type Joke = {
+export type JokeObject = {
   id: string;
   type: string;
   question: string;

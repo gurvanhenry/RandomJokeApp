@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react';
-import {Image, Pressable, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {Colors} from '../../constants/colors';
 import {useJoke} from './hooks/useJoke';
-
-const REFRESH_ICON = require('../../assets/refresh.png');
 
 export const Joke = () => {
   const {joke, getNewJoke} = useJoke();
@@ -61,21 +59,5 @@ const Answer = ({text}: {text: string}) => {
       }}>
       {text}
     </Text>
-  );
-};
-
-const NextJokeButton = ({onPress}: {onPress: () => void}) => {
-  return (
-    <Pressable
-      style={({pressed}) => ({
-        backgroundColor: pressed ? Colors.buttonPressed : Colors.button,
-        borderRadius: 10,
-        padding: 20,
-        marginBottom: 50,
-        alignSelf: 'center',
-      })}
-      onPress={onPress}>
-      <Image style={{height: 50, width: 50}} source={REFRESH_ICON} />
-    </Pressable>
   );
 };

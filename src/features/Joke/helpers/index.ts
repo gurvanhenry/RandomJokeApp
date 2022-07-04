@@ -1,11 +1,11 @@
-import {Joke, JokeAPI} from '../types';
+import {JokeObject, JokeAPI} from '../types';
 
 import {BLAGUE_API_KEY} from '@env';
 
 const BlaguesAPI = require('blagues-api');
 const blagues = new BlaguesAPI(BLAGUE_API_KEY);
 
-export async function getJoke(): Promise<Joke> {
+export async function getJoke(): Promise<JokeObject> {
   const receivedJoke = (await blagues.random()) as JokeAPI;
   const joke = {
     id: receivedJoke.id + '',

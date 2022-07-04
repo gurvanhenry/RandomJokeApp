@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {Text, View} from 'react-native';
 import {Colors} from '../../constants/colors';
+import {NextJokeButton} from './components/NextJokeButton';
 import {useJoke} from './hooks/useJoke';
 
 export const Joke = () => {

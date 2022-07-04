@@ -1,29 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
-import {JokeObject} from './types';
-import {getJoke} from './services';
 import {Colors} from '../../constants/colors';
+import {useJoke} from './hooks/useJoke';
 
 const REFRESH_ICON = require('../../assets/refresh.png');
 
-const DEFAULT_JOKE = {
-  id: '',
-  type: '',
-  question: '...',
-  answer: '...',
-};
-
 export const Joke = () => {
-  const [joke, setJoke] = useState<JokeObject>(DEFAULT_JOKE);
+  const {joke, getNewJoke} = useJoke();
 
   useEffect(() => {
     getNewJoke();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  async function getNewJoke() {
-    const newJoke = await getJoke();
-    setJoke(newJoke);
-  }
 
   return (
     <View style={{flexDirection: 'column', height: '100%'}}>
